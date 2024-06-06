@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using LtiAdvantage.AspNetCore.NamesRoleProvisioningService;
 
 namespace AdvantagePlatform.Controllers
 {
