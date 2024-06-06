@@ -17,6 +17,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
 using Swashbuckle.AspNetCore.SwaggerGen;
+using System.Security.Cryptography.X509Certificates;
 
 namespace AdvantagePlatform
 {
@@ -104,13 +105,16 @@ namespace AdvantagePlatform
                 });
             });
 
+            var cert = new X509Certificate2("certificate.pfx", "your-password");
+
+            // Add Identity Server configured to support LTI Advantage needs
             // Add Identity Server configured to support LTI Advantage needs
             services.AddIdentityServer(options =>
                 {
                     options.UserInteraction.LoginUrl = "/Identity/Account/Login";
                     options.UserInteraction.LogoutUrl = "/Identity/Account/Logout";
                 })
-
+                .AddSigningCredential(cert)
                 // This is not appropriate for production
                 .AddDeveloperSigningCredential()
 
