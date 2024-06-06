@@ -32,6 +32,12 @@
 	  </None>
     </ItemGroup>
 
+    <ItemGroup>
+	  <None Update="certificate.pfx">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+    </ItemGroup>
+
   <ItemGroup>
     <Folder Include="Areas\Identity\Services\" />
     <Folder Include="Properties\PublishProfiles\" />
