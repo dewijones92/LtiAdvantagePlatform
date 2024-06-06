@@ -13,9 +13,11 @@ cleanup() {
 # Trap SIGINT (Ctrl+C) and call the cleanup function
 trap cleanup SIGINT
 
-# Run the dotnet container
+# Clean the git repository
 git clean -xdf
-DOTNET_CONTAINER_ID=$(docker run --rm --network host -v $(pwd):/app -w /app mcr.microsoft.com/dotnet/core/sdk:2.2 /bin/bash -c "dotnet clean && dotnet build && dotnet run" & echo $!)
+
+# Run the dotnet container in the foreground
+DOTNET_CONTAINER_ID=$(docker run --rm --network host -v $(pwd):/app -w /app mcr.microsoft.com/dotnet/core/sdk:2.2 /bin/bash -c "dotnet clean && dotnet build && dotnet run")
 
 # Wait for the dotnet container to finish
-wait $DOTNET_CONTAINER_ID
+docker wait $DOTNET_CONTAINER_ID
