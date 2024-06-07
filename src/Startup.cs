@@ -113,6 +113,7 @@ namespace AdvantagePlatform
                 {
                     options.UserInteraction.LoginUrl = "/Identity/Account/Login";
                     options.UserInteraction.LogoutUrl = "/Identity/Account/Logout";
+		    options.PublicOrigin = "https://lti-platform.dev.aptem.dev";
                 })
                 .AddSigningCredential(cert)
                 // This is not appropriate for production
